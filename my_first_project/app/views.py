@@ -6,6 +6,9 @@ from django.views.generic import View
 from .forms import UserForm
 from django.contrib.auth import authenticate, login
 
+from django.contrib.auth.views import LoginView as DjangoLoginView
+from django.contrib.auth import logout
+
 # Create your views here.
 
 class IndexView(generic.ListView):
@@ -52,8 +55,6 @@ class UserFormView(View):
 
         return render(request, self.template_name, {'form': form})
 
-from django.contrib.auth.views import LoginView as DjangoLoginView
-from django.contrib.auth import logout
 
 class LoginView(DjangoLoginView):
     template_name = 'app/login.html'
@@ -77,9 +78,8 @@ class PieceCreateView(LoginRequiredMixin, generic.CreateView):
     template_name = 'app/add_piece.html'
     success_url = reverse_lazy('index') # Redirect to home after adding
     
-    # Optional: Automatically set some fields or handle logic
     def form_valid(self, form):
-        # We could auto-assign user if specific models had user field
+       
         return super().form_valid(form)
 
 class PieceUpdateView(LoginRequiredMixin, generic.UpdateView):
@@ -140,3 +140,4 @@ class DashboardView(View):
             'top_artists': top_artists,
         }
         return render(request, self.template_name, context)
+
