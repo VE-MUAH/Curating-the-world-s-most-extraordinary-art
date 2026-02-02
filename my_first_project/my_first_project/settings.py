@@ -25,7 +25,14 @@ SECRET_KEY = 'django-insecure-nb@+@2&z)%tgu$*%845mvg7$8hf!rogawcbob$b9-q2+u6xt4+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "curating-the-world-s-most-extraordinary-9ygs.onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
+
+
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -128,5 +135,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 
 
